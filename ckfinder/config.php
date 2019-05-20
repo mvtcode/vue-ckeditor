@@ -92,7 +92,7 @@ $baseDir = resolveUrl($baseUrl);
 Thumbnails : thumbnails settings. All thumbnails will end up in the same
 directory, no matter the resource type.
 */
-$config['Thumbnails'] = Array(
+$config['Thumbnails'] = [
 		'url' => $baseUrl . '_thumbs',
 		'directory' => $baseDir . '_thumbs',
 		'enabled' => true,
@@ -106,7 +106,7 @@ $config['Thumbnails'] = Array(
 Set the maximum size of uploaded images. If an uploaded image is larger, it
 gets scaled down proportionally. Set to 0 to disable this feature.
 */
-$config['Images'] = Array(
+$config['Images'] = [
 		'maxWidth' => 1600,
 		'maxHeight' => 1200,
 		'quality' => 80);
@@ -155,7 +155,7 @@ For example, if you want to restrict the upload, rename or delete of files in
 the "Logos" folder of the resource type "Images", you may uncomment the
 following definition, leaving the above one:
 
-$config['AccessControl'][] = Array(
+$config['AccessControl'][] = [
 		'role' => '*',
 		'resourceType' => 'Images',
 		'folder' => '/Logos',
@@ -196,69 +196,78 @@ to upload `.swf` files only if you understand and can accept this risk.
 */
 $config['DefaultResourceTypes'] = '';
 
-$config['ResourceType'][] = Array(
-		'name' => 'Files',// Single quotes not allowed
-		'url' => $baseUrl . 'files',
-		'directory' => $baseDir . 'files',
-		'maxSize' => 4194304, //4MB
-		'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Files',// Single quotes not allowed
+	'url' => $baseUrl . 'files',
+	'directory' => $baseDir . 'files',
+	'maxSize' => 4194304, //4MB
+	'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
+	'deniedExtensions' => ''
+];
 
-$config['ResourceType'][] = Array(
-		'name' => 'Images',
-		'url' => $baseUrl . 'images',
-		'directory' => $baseDir . 'images',
-		'maxSize' => 512000, //500KB
-		'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Images',
+	'url' => $baseUrl . 'images',
+	'directory' => $baseDir . 'images',
+	'maxSize' => 512000, //500KB
+	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+	'deniedExtensions' => ''
+];
 		
-$config['ResourceType'][] = Array(
-		'name' => 'Flash',
-		'url' => $baseUrl . 'flash',
-		'directory' => $baseDir . 'flash',
-		'maxSize' => 0,
-		'allowedExtensions' => 'swf,flv',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Flash',
+	'url' => $baseUrl . 'flash',
+	'directory' => $baseDir . 'flash',
+	'maxSize' => 0,
+	'allowedExtensions' => 'swf,flv',
+	'deniedExtensions' => ''
+];
 		
-$config['ResourceType'][] = Array(
-		'name' => 'Thumb_News',
-		'url' => $baseUrl . 'thumb_news',
-		'directory' => $baseDir . 'thumb_news',
-		'maxSize' => 153600, //150KB
-		'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Thumb_News',
+	'url' => $baseUrl . 'thumb_news',
+	'directory' => $baseDir . 'thumb_news',
+	'maxSize' => 153600, //150KB
+	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+	'deniedExtensions' => ''
+];
 		
-$config['ResourceType'][] = Array(
-		'name' => 'Audio',
-		'url' => $baseUrl . 'audio',
-		'directory' => $baseDir . 'audio',
-		'maxSize' => 0,
-		'allowedExtensions' => 'mp3,acc',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Audio',
+	'url' => $baseUrl . 'audio',
+	'directory' => $baseDir . 'audio',
+	'maxSize' => 0,
+	'allowedExtensions' => 'mp3,acc',
+	'deniedExtensions' => ''
+];
 
-$config['ResourceType'][] = Array(
-		'name' => 'Video',
-		'url' => $baseUrl . 'video',
-		'directory' => $baseDir . 'video',
-		'maxSize' => 0,
-		'allowedExtensions' => 'mp4,webm,m3u8,ts,bmp,gif,jpeg,jpg,png',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Video',
+	'url' => $baseUrl . 'video',
+	'directory' => $baseDir . 'video',
+	'maxSize' => 0,
+	'allowedExtensions' => 'mp4,webm,m3u8,ts,bmp,gif,jpeg,jpg,png',
+	'deniedExtensions' => ''
+];
 
-$config['ResourceType'][] = Array(
-		'name' => 'Image_Game',
-		'url' => $baseUrl . 'image_game',
-		'directory' => $baseDir . 'image_game',
-		'maxSize' => 20480, //20KB
-		'allowedExtensions' => 'gif,jpeg,jpg,png',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Image_Game',
+	'url' => $baseUrl . 'image_game',
+	'directory' => $baseDir . 'image_game',
+	'maxSize' => 20480, //20KB
+	'allowedExtensions' => 'gif,jpeg,jpg,png',
+	'deniedExtensions' => ''
+];
 
-$config['ResourceType'][] = Array(
-		'name' => 'Game_Flash',
-		'url' => $baseUrl . 'game_flash',
-		'directory' => $baseDir . 'game_flash',
-		'maxSize' => 0,
-		'allowedExtensions' => 'gif,jpeg,jpg,png,swf',
-		'deniedExtensions' => '');
+$config['ResourceType'][] = [
+	'name' => 'Game_Flash',
+	'url' => $baseUrl . 'game_flash',
+	'directory' => $baseDir . 'game_flash',
+	'maxSize' => 0,
+	'allowedExtensions' => 'gif,jpeg,jpg,png,swf',
+	'deniedExtensions' => ''
+];
+
 /*
  Due to security issues with Apache modules, it is recommended to leave the
  following setting enabled.
@@ -316,7 +325,7 @@ $config['CheckSizeAfterScaling'] = true;
 For security, HTML is allowed in the first Kb of data for files having the
 following extensions only.
 */
-$config['HtmlExtensions'] = array('html', 'htm', 'xml', 'js');
+$config['HtmlExtensions'] = ['html', 'htm', 'xml', 'js');
 
 /*
 Folders to not display in CKFinder, no matter their location.
@@ -324,14 +333,14 @@ No paths are accepted, only the folder name.
 The * and ? wildcards are accepted.
 ".*" disallows the creation of folders starting with a dot character.
 */
-$config['HideFolders'] = Array(".*", "CVS");
+$config['HideFolders'] = [".*", "CVS");
 
 /*
 Files to not display in CKFinder, no matter their location.
 No paths are accepted, only the file name, including extension.
 The * and ? wildcards are accepted.
 */
-$config['HideFiles'] = Array(".*");
+$config['HideFiles'] = [".*");
 
 /*
 After file is uploaded, sometimes it is required to change its permissions
@@ -340,13 +349,13 @@ If possible, it is recommended to set more restrictive permissions, like 0755.
 Set to 0 to disable this feature.
 Note: not needed on Windows-based servers.
 */
-$config['ChmodFiles'] = 0777 ;
+$config['ChmodFiles'] = 0777;
 
 /*
 See comments above.
 Used when creating folders that does not exist.
 */
-$config['ChmodFolders'] = 0755 ;
+$config['ChmodFolders'] = 0755;
 
 /*
 Force ASCII names for files and folders.
@@ -367,7 +376,6 @@ For more complex configuration options visit our Developer's Guide
   http://docs.cksource.com/CKFinder_2.x/Developers_Guide/PHP
 */
 $config['XSendfile'] = false;
-
 
 include_once "plugins/imageresize/plugin.php";
 include_once "plugins/fileeditor/plugin.php";
