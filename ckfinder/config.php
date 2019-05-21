@@ -1,5 +1,4 @@
 <?php
-include_once '../config/config.php'; //=> config allow access
 /*
  * ### CKFinder : Configuration File - Basic Instructions
  *
@@ -30,10 +29,12 @@ function CheckAuthentication()
 	// ... where $_SESSION['IsAuthorized'] is set to "true" as soon as the
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
-	if(!isset($_SESSION)) session_start();
-	if(!isset($_SESSION[session_user]))return true;
-	else return false;
-// 	return true;
+
+	// if(!isset($_SESSION)) session_start();
+	// if(!isset($_SESSION[session_user])) return true;
+	// else return false;
+
+	return true;
 }
 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
@@ -92,7 +93,7 @@ $baseDir = resolveUrl($baseUrl);
 Thumbnails : thumbnails settings. All thumbnails will end up in the same
 directory, no matter the resource type.
 */
-$config['Thumbnails'] = [
+$config['Thumbnails'] = Array(
 		'url' => $baseUrl . '_thumbs',
 		'directory' => $baseDir . '_thumbs',
 		'enabled' => true,
@@ -106,7 +107,7 @@ $config['Thumbnails'] = [
 Set the maximum size of uploaded images. If an uploaded image is larger, it
 gets scaled down proportionally. Set to 0 to disable this feature.
 */
-$config['Images'] = [
+$config['Images'] = Array(
 		'maxWidth' => 1600,
 		'maxHeight' => 1200,
 		'quality' => 80);
@@ -134,28 +135,27 @@ Subfolders inherit their default settings from their parents' definitions.
 	  means "all resource types".
 */
 
-$config['AccessControl'][] = [
-	'role' => '*',
-	'resourceType' => '*',
-	'folder' => '/',
+$config['AccessControl'][] = Array(
+		'role' => '*',
+		'resourceType' => '*',
+		'folder' => '/',
 
-	'folderView' => true,
-	'folderCreate' => true,
-	'folderRename' => true,
-	'folderDelete' => true,
+		'folderView' => true,
+		'folderCreate' => true,
+		'folderRename' => true,
+		'folderDelete' => true,
 
-	'fileView' => true,
-	'fileUpload' => true,
-	'fileRename' => true,
-	'fileDelete' => true
-];
+		'fileView' => true,
+		'fileUpload' => true,
+		'fileRename' => true,
+		'fileDelete' => true);
 
 /*
 For example, if you want to restrict the upload, rename or delete of files in
 the "Logos" folder of the resource type "Images", you may uncomment the
 following definition, leaving the above one:
 
-$config['AccessControl'][] = [
+$config['AccessControl'][] = Array(
 		'role' => '*',
 		'resourceType' => 'Images',
 		'folder' => '/Logos',
@@ -325,7 +325,7 @@ $config['CheckSizeAfterScaling'] = true;
 For security, HTML is allowed in the first Kb of data for files having the
 following extensions only.
 */
-$config['HtmlExtensions'] = ['html', 'htm', 'xml', 'js');
+$config['HtmlExtensions'] = array('html', 'htm', 'xml', 'js');
 
 /*
 Folders to not display in CKFinder, no matter their location.
@@ -333,14 +333,14 @@ No paths are accepted, only the folder name.
 The * and ? wildcards are accepted.
 ".*" disallows the creation of folders starting with a dot character.
 */
-$config['HideFolders'] = [".*", "CVS");
+$config['HideFolders'] = Array(".*", "CVS");
 
 /*
 Files to not display in CKFinder, no matter their location.
 No paths are accepted, only the file name, including extension.
 The * and ? wildcards are accepted.
 */
-$config['HideFiles'] = [".*");
+$config['HideFiles'] = Array(".*");
 
 /*
 After file is uploaded, sometimes it is required to change its permissions
@@ -349,13 +349,13 @@ If possible, it is recommended to set more restrictive permissions, like 0755.
 Set to 0 to disable this feature.
 Note: not needed on Windows-based servers.
 */
-$config['ChmodFiles'] = 0777;
+$config['ChmodFiles'] = 0777 ;
 
 /*
 See comments above.
 Used when creating folders that does not exist.
 */
-$config['ChmodFolders'] = 0755;
+$config['ChmodFolders'] = 0755 ;
 
 /*
 Force ASCII names for files and folders.
@@ -376,6 +376,17 @@ For more complex configuration options visit our Developer's Guide
   http://docs.cksource.com/CKFinder_2.x/Developers_Guide/PHP
 */
 $config['XSendfile'] = false;
+
+/*
+Enables protection in the connector.
+The default CSRF protection mechanism is based on double submit cookies, where
+connector checks if the request contains a valid token that matches the token
+sent in the cookie
+
+https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet#Double_Submit_Cookies
+*/
+$config['EnableCsrfProtection'] = true;
+
 
 include_once "plugins/imageresize/plugin.php";
 include_once "plugins/fileeditor/plugin.php";

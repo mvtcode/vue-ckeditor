@@ -1,0 +1,6 @@
+server:
+    image: tanmv/nginx-php-fpm:1.0.0
+    ports:
+        - "9999:80"
+    volumes:
+        - ./:/var/www/

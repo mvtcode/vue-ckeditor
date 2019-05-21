@@ -69,6 +69,7 @@ class CKFinder_Connector_CommandHandler_Init extends CKFinder_Connector_CommandH
         $_oConnInfo = new Ckfinder_Connector_Utils_XmlNode("ConnectorInfo");
         $this->_connectorNode->addChild($_oConnInfo);
         $_oConnInfo->addAttribute("enabled", $_config->getIsEnabled() ? "true" : "false");
+        $_oConnInfo->addAttribute("csrfProtection", $_config->getEnableCsrfProtection() ? "true" : "false");
 
         if (!$_config->getIsEnabled()) {
             $this->_errorHandler->throwError(CKFINDER_CONNECTOR_ERROR_CONNECTOR_DISABLED);

@@ -203,6 +203,12 @@ class CKFinder_Connector_Core_Config
      * @var	array	$_xsendfileNginx	Configuration for location => root
      */
     private $_xsendfileNginx = array();
+    /**
+     * Enables CSRF protection in the connector
+     *
+     * @var bool
+     */
+    private $_enableCsrfProtection = true;
 
     function __construct()
     {
@@ -558,6 +564,9 @@ class CKFinder_Connector_Core_Config
         if (isset($GLOBALS['config']['XSendfileNginx'])) {
           $this->_xsendfileNginx = (array)$GLOBALS['config']['XSendfileNginx'];
         }
+        if (isset($GLOBALS['config']['EnableCsrfProtection'])) {
+            $this->_enableCsrfProtection = CKFinder_Connector_Utils_Misc::booleanValue($GLOBALS['config']['EnableCsrfProtection']);
+        }
     }
 
     /**
@@ -597,6 +606,17 @@ class CKFinder_Connector_Core_Config
      */
     public function getXSendfile(){
       return $this->_xsendfile;
+    }
+
+    /**
+     * Get "enableCsrfProtection" option value
+     *
+     * @access public
+     * @return boolean
+     */
+    public function getEnableCsrfProtection()
+    {
+        return $this->_enableCsrfProtection;
     }
 
     /**
