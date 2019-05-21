@@ -8,8 +8,6 @@ COPY ./ckeditor /var/www/
 COPY ./ckfinder /var/www/
 COPY ./uploads /var/www/
 
-# RUN chmod -R 777 /var/www/uploads/
-
 RUN find /var/www/uploads/ -type d -print0 | xargs -0 chmod a+rwx;
 RUN find /var/www/uploads/ -type f -print0 | xargs -0 chmod a+rw;
 
