@@ -2,7 +2,11 @@ FROM tanmv/nginx-php-fpm:1.0.0
 
 WORKDIR /var/www
 RUN rm -rf /var/www/*
-COPY ./ /var/www/
+
+COPY ./index.html /var/www/
+COPY ./ckeditor /var/www/
+COPY ./ckfinder /var/www/
+COPY ./uploads /var/www/
 
 # RUN chmod -R 777 /var/www/uploads/
 
